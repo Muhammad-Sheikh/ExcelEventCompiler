@@ -1,15 +1,70 @@
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import os
+import pickle
+import pandas as pd
+import time
 
+userInput = input("Welcome to ExcelAutoFormatter! If this is your first time or you are coming back, enter GO to get started. If you would like to exit, please enter EXIT.").lower()
 
-def print_hi(name):2
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+if userInput == 'go':
+    # gets Current Directory, and makes a new folder in for all processed files
+    currentDir = os.getcwd()
+    workingDir = currentDir + '\\excelFormatter'
+    # if the folder does not exist, creates it.
+    while not os.path.exists(workingDir):
+        os.mkdir(workingDir)
 
+    # Outlines the file format
+    Settings = os.path.join(workingDir, 'Settings.config')
+    programNames = os.path.join(workingDir, 'programNames.txt')
+    programDates = os.path.join(workingDir, 'dates.txt')
+    programDescription = os.path.join(workingDir, 'desc.txt')
+    programLocation = os.path.join(workingDir, 'location.txt')
+    programTiming = os.path.join(workingDir, 'timing.txt')
+    descriptorsLocation = [programNames, programDates, programDescription, programLocation, programTiming, Settings]
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    # Checks and creates needed files
+    for descriptorFiles in descriptorsLocation:
+        while not os.path.exists(descriptorFiles):
+            open(descriptorFiles, 'x')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # Writes Descriptor to the .config file, to allow it to use it for future usage.
+    with open(Settings, 'wb') as config:
+        pickle.dump(descriptorsLocation, config)
+
+elif userInput == 'exit':
+    exit()
+else:
+    print("Invalid Input. Exiting...")
+    time.sleep(5)
+    exit()
+
+ # Reads off the settings file before any thing is used
+with open((os.path.join((os.getcwd() + '\\excelFormatter'), 'Settings.config')), 'rb') as config:
+    descriptorsLocation = pickle.load(config)
+
+#Double checks that the files are filled in before reading and exporting, as to prevent an out of range error
+userInput = input("Are you ready to make the final file? If so, please enter Y (Make sure the files have the same "
+                  "amount of items & are filled in.)\n If not, enter N to exit.").lower()
+None if userInput == 'y' else exit()
+
+#Opens all files for reading, as well as removes all newline separators
+currentNames = open(descriptorsLocation[0], "r").read().splitlines()
+currentDate = open(descriptorsLocation[1], "r").read().splitlines()
+currentDesc = open(descriptorsLocation[2], "r").read().splitlines()
+currentLocation = open(descriptorsLocation[3], "r").read().splitlines()
+currentTiming = open(descriptorsLocation[4], "r").read().splitlines()
+
+#Makes main data frame for import/exporting. Uses the list created from reading the files made.
+formattedEXCL= pd.DataFrame({"Program Name": currentNames, "Program Date": currentDate, "Program Description:": currentDesc, "Program Location:": currentLocation, "Program Timing:": currentTiming})
+
+#Asks user for what format the final file should be, and exports depending on the input.
+userInput = input("What format would you like? HTML or XLSX?").lower()
+if userInput == 'xlsx':
+    formattedEXCL.to_excel('./output.xlsx')
+elif userInput == 'html':
+    formattedEXCL.html('./output.html')
+else:
+    "Invalid Input. Exiting..."
+    time.sleep(5)
+    exit()

@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18fd0445-662f-4ca0-9ae6-79213c40bc23" name="Changes" comment="" />
+
+    <list default="true" id="18fd0445-662f-4ca0-9ae6-79213c40bc23" name="Changes" comment="added basis of settings, directory storage and pickle file">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excelFormatter/Settings.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/excelFormatter/dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/excelFormatter/desc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/excelFormatter/location.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/excelFormatter/programNames.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/excelFormatter/timing.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +36,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/WORK/PythonProjects/ExcelFormatter"
+    "last_opened_file_path": "E:/WORK/PythonProjects/ExcelFormatter",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RunManager">
@@ -61,17 +72,18 @@
       <option name="presentableId" value="Default" />
       <updated>1671575802036</updated>
     </task>
+    <task id="LOCAL-00001" summary="added basis of settings, directory storage and pickle file">
+      <created>1671584141730</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671584141730</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>7</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added basis of settings, directory storage and pickle file" />
+    <option name="LAST_COMMIT_MESSAGE" value="added basis of settings, directory storage and pickle file" />
   </component>
 </project>
