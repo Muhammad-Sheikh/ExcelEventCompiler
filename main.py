@@ -14,13 +14,14 @@ if userInput == 'go':
     while not os.path.exists(workingDir):
         os.mkdir(workingDir)
 
-    # Outlines the file format
+    #Creates new folder in the directory, and stores the various files in there.
     Settings = os.path.join(workingDir, 'Settings.config')
     programNames = os.path.join(workingDir, 'programNames.txt')
     programDates = os.path.join(workingDir, 'dates.txt')
     programDescription = os.path.join(workingDir, 'desc.txt')
     programLocation = os.path.join(workingDir, 'location.txt')
     programTiming = os.path.join(workingDir, 'timing.txt')
+    #starts array for all stored locations. Saves this array to the config file, as to simplify the storage file.
     descriptorsLocation = [programNames, programDates, programDescription, programLocation, programTiming, Settings]
 
     # Checks and creates needed files
@@ -31,7 +32,7 @@ if userInput == 'go':
     # Writes Descriptor to the .config file, to allow it to use it for future usage.
     with open(Settings, 'wb') as config:
         pickle.dump(descriptorsLocation, config)
-
+#Catches invalid and input and exits the program
 elif userInput == 'exit':
     exit()
 else:
@@ -60,6 +61,7 @@ formattedEXCL= pd.DataFrame({"Program Name": currentNames, "Program Date": curre
 
 #Asks user for what format the final file should be, and exports depending on the input.
 userInput = input("What format would you like? HTML or XLSX?").lower()
+#Simple conditonal for outputs, and makes it in the same script.
 if userInput == 'xlsx':
     formattedEXCL.to_excel('./output.xlsx')
 elif userInput == 'html':
