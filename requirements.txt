@@ -1,0 +1,3 @@
+PACKAGES NEEDED
+pandas
+openpyxl
